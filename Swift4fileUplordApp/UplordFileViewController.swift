@@ -32,22 +32,6 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func upLordButton(_ sender: Any) {
-        num = num + 1
-        let ref = storage.reference()
-        let data1:UIImage = UIImage(named:"sample55.jpg")!
-        let data: Data = UIImageJPEGRepresentation(data1, 1)!
-        let path = ref.child("image").child("sample\(num).jpg")
-        let uploadTask = path.putData(data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                // Uh-oh, an error occurred!
-                return
-            }
-            // Metadata contains file metadata such as size, content-type, and download URL.
-            let downloadURL = metadata.downloadURL
-            print(downloadURL)
-        }
-    }
     
     @IBAction func selectImage(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
@@ -68,7 +52,7 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
         format.dateFormat = "yyyy_MM_dd_HH_mm_ss"
         let datePath = format.string(from: date as Date)
         
-        let data: Data = UIImageJPEGRepresentation(images, 0.5)!
+        let data: Data = UIImageJPEGRepresentation(images, 0.1)!
         let imagePath = ref.child("image").child("\(datePath).jpg")
         let uploadTask = imagePath.putData(data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
@@ -79,8 +63,36 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
             let downloadURL = metadata.downloadURL
             print(downloadURL)
         }
+//        let metadata = StorageMetadata()
+//        metadata.contentType = "image/jpeg"
+//        var m_data = [
+//            "customMetadata": [
+//                "location": "Yosemite, CA, USA",
+//                "activity": "Hiking"
+//            ]
+//        ]
+//        m_data.data(using: .utf8)
+//        imagePath.putData(m_data, metadata: metadata)
+        
+        
         dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func takePhoto(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            picker.allowsEditing = true
+            present(picker, animated: true, completion: nil)
+        }else{
+            print("エラー")
+        }
+        
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
