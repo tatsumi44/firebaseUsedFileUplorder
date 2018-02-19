@@ -1,0 +1,6 @@
+framework module Pods_Swift4fileUplordApp {
+  umbrella header "Pods-Swift4fileUplordApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
