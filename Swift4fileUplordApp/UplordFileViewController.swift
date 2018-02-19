@@ -17,12 +17,6 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let date = NSDate()
-        let format = DateFormatter()
-        format.dateFormat = "yyyy_MM_dd_HH_mm_ss"
-        let datePath = format.string(from: date as Date)
-        print(datePath)
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +24,7 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //ライブラリを使用する時
     @IBAction func selectImage(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             let picker = UIImagePickerController()
@@ -42,18 +36,26 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
             print("エラー")
         }
     }
+    //画像が選択し終わった時に呼ばれる
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         images = info[UIImagePickerControllerEditedImage] as! UIImage
+        //ストレージ接続
         let ref = storage.reference()
+        //db接続
         db = Database.database().reference()
+        //時間を取得
         let date = NSDate()
+        //時間を文字列に整形
         let format = DateFormatter()
         format.dateFormat = "yyyy_MM_dd_HH_mm_ss"
-        
+        //整形した文字列を画像のpathに整形
         let datePath = format.string(from: date as Date)
         db.ref.child("photo").childByAutoId().setValue(["path": "\(datePath).jpg"])
+        //画像をjpgのデータ形式に変換
         let data: Data = UIImageJPEGRepresentation(images, 0.1)!
+        //ストレージの保存先のpathを指定
         let imagePath = ref.child("image").child("\(datePath).jpg")
+        //ストレージにデータ形式で画像を保存
         let uploadTask = imagePath.putData(data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
                 // Uh-oh, an error occurred!
@@ -63,21 +65,9 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
             let downloadURL = metadata.downloadURL
             print(downloadURL)
         }
-//        let metadata = StorageMetadata()
-//        metadata.contentType = "image/jpeg"
-//        var m_data = [
-//            "customMetadata": [
-//                "location": "Yosemite, CA, USA",
-//                "activity": "Hiking"
-//            ]
-//        ]
-//        m_data.data(using: .utf8)
-//        imagePath.putData(m_data, metadata: metadata)
-        
-        
         dismiss(animated: true, completion: nil)
     }
-    
+    //写真を撮る時に呼ばれる
     @IBAction func takePhoto(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             let picker = UIImagePickerController()
@@ -90,7 +80,7 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
         }
         
     }
-    
+    //戻るボタンが押された時に呼ばれる
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
