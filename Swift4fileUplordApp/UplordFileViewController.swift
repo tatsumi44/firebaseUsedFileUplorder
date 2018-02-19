@@ -13,6 +13,7 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
     let storage = Storage.storage()
     var num: Int = 10
     var images: UIImage!
+    var db: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +22,7 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
         format.dateFormat = "yyyy_MM_dd_HH_mm_ss"
         let datePath = format.string(from: date as Date)
         print(datePath)
-        
-       
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,11 +45,13 @@ class UplordFileViewController: UIViewController,UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         images = info[UIImagePickerControllerEditedImage] as! UIImage
         let ref = storage.reference()
+        db = Database.database().reference()
         let date = NSDate()
         let format = DateFormatter()
         format.dateFormat = "yyyy_MM_dd_HH_mm_ss"
-        let datePath = format.string(from: date as Date)
         
+        let datePath = format.string(from: date as Date)
+        db.ref.child("photo").childByAutoId().setValue(["path": "\(datePath).jpg"])
         let data: Data = UIImageJPEGRepresentation(images, 0.1)!
         let imagePath = ref.child("image").child("\(datePath).jpg")
         let uploadTask = imagePath.putData(data, metadata: nil) { (metadata, error) in

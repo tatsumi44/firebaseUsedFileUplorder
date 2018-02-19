@@ -6,7 +6,8 @@ target 'Swift4fileUplordApp' do
   use_frameworks!
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
-  
+  pod 'FirebaseUI/Storage'
+  pod 'Firebase/Database'
 
   # Pods for Swift4fileUplordApp
 
