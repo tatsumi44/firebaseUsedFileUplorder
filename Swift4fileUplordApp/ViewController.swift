@@ -40,6 +40,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         print(indexPath.row)
     }
     @IBAction func postButton(_ sender: Any) {
+        performSegue(withIdentifier: "goPost", sender: nil)
     }
     
 

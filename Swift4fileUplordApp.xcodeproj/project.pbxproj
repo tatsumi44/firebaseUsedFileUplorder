@@ -13,6 +13,9 @@
 		B9DE864E203A7531004F1F42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DE864D203A7531004F1F42 /* Assets.xcassets */; };
 		B9DE8651203A7531004F1F42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DE864F203A7531004F1F42 /* LaunchScreen.storyboard */; };
 		B9DE8659203AAFEE004F1F42 /* tatsumi-syashinn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B9DE8658203AAFEE004F1F42 /* tatsumi-syashinn.jpg */; };
+		B9DE865F203AC438004F1F42 /* UplordFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DE865E203AC438004F1F42 /* UplordFileViewController.swift */; };
+		B9DE8661203ACBF2004F1F42 /* sample55.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B9DE8660203ACBF2004F1F42 /* sample55.jpg */; };
+		B9DE8665203ACE33004F1F42 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DE8664203ACE32004F1F42 /* GoogleService-Info.plist */; };
 		BECEDB243E3DF387DCBB4618 /* Pods_Swift4fileUplordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9E444E7C90CD8BA47197F6 /* Pods_Swift4fileUplordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,9 @@
 		B9DE8650203A7531004F1F42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9DE8652203A7531004F1F42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9DE8658203AAFEE004F1F42 /* tatsumi-syashinn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tatsumi-syashinn.jpg"; sourceTree = "<group>"; };
+		B9DE865E203AC438004F1F42 /* UplordFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UplordFileViewController.swift; sourceTree = "<group>"; };
+		B9DE8660203ACBF2004F1F42 /* sample55.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample55.jpg; sourceTree = "<group>"; };
+		B9DE8664203ACE32004F1F42 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +86,12 @@
 		B9DE8645203A7531004F1F42 /* Swift4fileUplordApp */ = {
 			isa = PBXGroup;
 			children = (
+				B9DE8664203ACE32004F1F42 /* GoogleService-Info.plist */,
 				B9DE8658203AAFEE004F1F42 /* tatsumi-syashinn.jpg */,
+				B9DE8660203ACBF2004F1F42 /* sample55.jpg */,
 				B9DE8646203A7531004F1F42 /* AppDelegate.swift */,
 				B9DE8648203A7531004F1F42 /* ViewController.swift */,
+				B9DE865E203AC438004F1F42 /* UplordFileViewController.swift */,
 				B9DE864A203A7531004F1F42 /* Main.storyboard */,
 				B9DE864D203A7531004F1F42 /* Assets.xcassets */,
 				B9DE864F203A7531004F1F42 /* LaunchScreen.storyboard */,
@@ -154,8 +163,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9DE8659203AAFEE004F1F42 /* tatsumi-syashinn.jpg in Resources */,
+				B9DE8661203ACBF2004F1F42 /* sample55.jpg in Resources */,
 				B9DE8651203A7531004F1F42 /* LaunchScreen.storyboard in Resources */,
 				B9DE864E203A7531004F1F42 /* Assets.xcassets in Resources */,
+				B9DE8665203ACE33004F1F42 /* GoogleService-Info.plist in Resources */,
 				B9DE864C203A7531004F1F42 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9DE865F203AC438004F1F42 /* UplordFileViewController.swift in Sources */,
 				B9DE8649203A7531004F1F42 /* ViewController.swift in Sources */,
 				B9DE8647203A7531004F1F42 /* AppDelegate.swift in Sources */,
 			);
